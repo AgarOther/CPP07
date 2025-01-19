@@ -1,13 +1,12 @@
 # Compilation
 CC					=	c++
-CFLAGS				=	-Wall -Wextra -Werror -std=c++98
+CFLAGS				=	-Wall -Wextra -Werror -std=c++98 -g
 
 # Names
 NAME				=	array
 
 # Sources & Includes
-SRCS				= 	main.cpp \
-						Array.hpp
+SRCS				= 	main.cpp
 OBJ_FOLDER			=	objs
 
 # Objects

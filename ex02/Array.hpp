@@ -1,26 +1,61 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Array.hpp                                          :+:      :+:    :+:   */
+/*   Array.tpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/19 02:25:17 by marvin            #+#    #+#             */
-/*   Updated: 2025/01/19 02:25:17 by marvin           ###   ########.fr       */
+/*   Created: 2025/01/19 13:06:43 by marvin            #+#    #+#             */
+/*   Updated: 2025/01/19 13:06:43 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#include "Array.tpp"
 
-class Array
+template <class T>
+Array<T>::Array()
 {
-	private:
+	_value = new T[0];
+	_size = 0;
+}
 
-	public:
-		Array();
-		~Array();
-		Array(const Array &copy);
-		Array &operator=(Array const &obj);
+template <class T>
+Array<T>::~Array()
+{
+	delete [] _value;
+}
 
-		Array(unsigned int size);
-};
+template <class T>
+Array<T>::Array(const Array &copy)
+{
+	*this = copy;
+}
+
+template <class T>
+Array<T> &Array<T>::operator=(Array const &obj)
+{
+	if (this != &obj)
+	{
+		_size = obj._size;
+		_value = new T[obj._size];
+		for (int i = 0; i < _size; i++)
+			_value[i] = obj._value[i];
+	}
+	return (*this);
+}
+
+template <class T>
+T &Array<T>::operator[](int i) const
+{
+	if (i < 0 || i >= _size)
+		throw std::exception();
+
+	return _value[i];
+}
+
+template <class T>
+Array<T>::Array(int size)
+{
+	_value = new T[size];
+	_size = size;
+}
