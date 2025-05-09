@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Array.hpp                                          :+:      :+:    :+:   */
+/*   Array.tpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: scraeyme <scraeyme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/19 02:25:17 by marvin            #+#    #+#             */
-/*   Updated: 2025/01/19 02:25:17 by marvin           ###   ########.fr       */
+/*   Created: 2025/05/09 14:52:43 by scraeyme          #+#    #+#             */
+/*   Updated: 2025/05/09 15:50:01 by scraeyme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <iostream>
 
 template <class T>
 class Array
 {
-	private:
-		T *_value;
-		int _size;
 	public:
 		Array();
+		Array(int length);
+		Array(Array &copy);
+		Array &operator=(Array &obj);
+		T &operator[](int index);
 		~Array();
-		Array(const Array &copy);
-		Array &operator=(Array const &obj);
 
-		T &operator [] (int i) const;
-
-		Array(int size);
+		int size() const;
+	private:
+		T *_array;
+		int _length;
 };

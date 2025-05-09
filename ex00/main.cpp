@@ -3,33 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: scraeyme <scraeyme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/19 01:35:15 by marvin            #+#    #+#             */
-/*   Updated: 2025/01/19 01:35:15 by marvin           ###   ########.fr       */
+/*   Created: 2025/05/09 14:24:38 by scraeyme          #+#    #+#             */
+/*   Updated: 2025/05/09 14:37:48 by scraeyme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "whatever.hpp"
+#include "colors.hpp"
 #include <iostream>
 
-int main( void ) {
-	int a = 2;
-	int b = 3;
+int main()
+{
+	int a = 5;
+	int b = 4;
 
-	::swap( a, b );
-	std::cout << "a = " << a << ", b = " << b << std::endl;
-	std::cout << "min( a, b ) = " << ::min( a, b ) << std::endl;
-	std::cout << "max( a, b ) = " << ::max( a, b ) << std::endl;
-
-	std::string c = "chaine1";
-	std::string d = "chaine2";
-
-	::swap(c, d);
-	std::cout << "c = " << c << ", d = " << d << std::endl;
-	std::cout << "min( c, d ) = " << ::min( c, d ) << std::endl;
-	std::cout << "max( c, d ) = " << ::max( c, d ) << std::endl;
-
-	return 0;
+	std::cout << CYAN << "Max: " << max(a, b) << RESET << std::endl;
+	std::cout << MAGENTA << "Min: " << min(a, b) << RESET << std::endl;
+	swap(a, b);
+	std::cout << YELLOW << "Swap: a: " << a << " | b: " << b << RESET << std::endl;
 }
-

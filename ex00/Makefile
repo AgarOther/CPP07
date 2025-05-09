@@ -1,17 +1,16 @@
 # Compilation
 CC					=	c++
-CFLAGS				=	-Wall -Wextra -Werror -std=c++98
+CFLAGS				=	-Wall -Wextra -Werror -std=c++98 -g
 
 # Names
-NAME				=	whatever
+NAME				=	start
 
 # Sources & Includes
-SRCS				= 	main.cpp \
-						whatever.hpp
+SRCS				= 	main.cpp
 OBJ_FOLDER			=	objs
 
 # Objects
-OBJS				=	$(patsubst %.c, $(OBJ_FOLDER)/%.o, $(SRCS))
+OBJS				=	$(patsubst %.cpp, $(OBJ_FOLDER)/%.o, $(SRCS))
 
 # Custom Makefile Flags
 MAKEFLAGS			+=	--no-print-directory --silent
@@ -28,23 +27,14 @@ ALL_FCLEAN			=	@echo "🧹$(LIGHT_GREEN) Project's objects & Executables cleaned
 
 # Rules
 
-all : check_relink
-
-check_relink:
-	@if [ ! -d $(OBJ_FOLDER) ]; then \
-		mkdir $(OBJ_FOLDER); \
-	fi
-	@if [ -f $(NAME) ]; then \
-		echo '✅$(LIGHT_GREEN) Nothing to be done for "all"! ✅$(RESET)\n'; \
-	else \
-		$(MAKE) $(NAME); \
-	fi
+all :$(NAME)
 
 $(NAME): $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 	$(EXE_DONE)
 
 $(OBJ_FOLDER)/%.o: %.cpp
+	@mkdir -p $(dir $@)
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean :

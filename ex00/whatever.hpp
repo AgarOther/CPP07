@@ -3,29 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   whatever.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: scraeyme <scraeyme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/19 01:35:33 by marvin            #+#    #+#             */
-/*   Updated: 2025/01/19 01:35:33 by marvin           ###   ########.fr       */
+/*   Created: 2025/05/09 14:24:33 by scraeyme          #+#    #+#             */
+/*   Updated: 2025/05/09 14:37:58 by scraeyme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <utility>
+#ifndef WHATEVER_HPP
+# define WHATEVER_HPP
 
 template <typename T>
-void swap(T &arg1, T &arg2)
+void swap(T &a, T &b)
 {
-	std::swap(arg1, arg2);
+	T tmp = a;
+	a = b;
+	b = tmp;
 }
 
 template <typename T>
-const T min(const T &arg1, const T &arg2)
+T min(T &a, T &b)
 {
-	return (arg1 < arg2 ? arg1 : arg2);
+	if (a < b)
+		return (a);
+	return (b);
 }
 
 template <typename T>
-const T max(const T &arg1, const T &arg2)
+T max(T &a, T &b)
 {
-	return (arg1 > arg2 ? arg1 : arg2);
+	if (a > b)
+		return (a);
+	return (b);
 }
+
+#endif
